@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,6 +16,19 @@ class HomePage extends StatelessWidget {
         title: const Text("Home Page"),
         backgroundColor: primaryColor,
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
 
       body: Padding(
