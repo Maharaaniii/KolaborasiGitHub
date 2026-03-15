@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'signup_page.dart';
+import 'homepage.dart';
 
 class LoginPage extends StatelessWidget {
-   LoginPage({super.key});
+  LoginPage({super.key});
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     const primaryBlue = Color(0xFF1E88E5);
 
     return Scaffold(
@@ -22,13 +22,8 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               /// LOGO / TITLE
-              Icon(
-                Icons.lock_outline,
-                size: 90,
-                color: primaryBlue,
-              ),
+              Icon(Icons.lock_outline, size: 90, color: primaryBlue),
 
               const SizedBox(height: 20),
 
@@ -45,9 +40,7 @@ class LoginPage extends StatelessWidget {
 
               Text(
                 "Login to continue",
-                style: TextStyle(
-                  color: Colors.grey[600],
-                ),
+                style: TextStyle(color: Colors.grey[600]),
               ),
 
               const SizedBox(height: 40),
@@ -95,15 +88,22 @@ class LoginPage extends StatelessWidget {
                   ),
 
                   onPressed: () {
-                    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
-
+                    if (emailController.text.isEmpty ||
+                        passwordController.text.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Email dan Password harus diisi"),
-                      ),
-                    );
+                        const SnackBar(
+                          content: Text("Email dan Password harus diisi"),
+                        ),
+                      );
+                    } else {
+                      // Pindah ke homepage
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
                     }
-                    
                   },
 
                   child: const Text(
@@ -123,7 +123,6 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   const Text("Don't have an account? "),
 
                   GestureDetector(
@@ -142,9 +141,9 @@ class LoginPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),
